@@ -38,14 +38,9 @@ public class PlatypusEntity extends AnimalEntity implements GeoEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.2D, false));
-        this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.75f, 1));
+        this.goalSelector.add(2, new WanderAroundFarGoal(this, 0.75f, 1));
 
-        this.goalSelector.add(4, new LookAroundGoal(this));
-
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, MerchantEntity.class, true));
-        this.targetSelector.add(3, new ActiveTargetGoal<>(this, ChickenEntity.class, true));
+        this.goalSelector.add(3, new LookAroundGoal(this));
     }
 
     @Nullable
@@ -61,10 +56,10 @@ public class PlatypusEntity extends AnimalEntity implements GeoEntity {
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> tAnimationState) {
         if(tAnimationState.isMoving()) {
-            tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.ground_walk", Animation.LoopType.LOOP));
+            tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.walk", Animation.LoopType.LOOP));
         }
 
-        tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.ground_idle", Animation.LoopType.LOOP));
+        tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
 
