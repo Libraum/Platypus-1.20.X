@@ -1,14 +1,15 @@
 package net.libraum.platypus.entity.custom;
 
 import net.libraum.platypus.entity.ModEntities;
+import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.passive.MerchantEntity;
+import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -22,20 +23,19 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class PlatypusEntity extends AnimalEntity implements GeoEntity {
+public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable {
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    public PlatypusEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    public PlatypusEntity(EntityType<? extends AxolotlEntity> entityType, World world) {
         super(entityType, world);
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
-        return AnimalEntity.createMobAttributes()
+        return AxolotlEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0f)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.0f)

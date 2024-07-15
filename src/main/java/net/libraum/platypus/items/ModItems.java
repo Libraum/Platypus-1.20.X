@@ -18,8 +18,15 @@ public class ModItems {
     public static final Item PLATYPUS_SPAWN_EGG = registerItem("platypus_spawn_egg",
             new SpawnEggItem(ModEntities.PLATYPUS, 0x4a2e1b, 0x31373e, new FabricItemSettings()));
 
+    public static final Item PLATYPUS_BUCKET = registerItem("platypus_bucket",
+            new Item(new FabricItemSettings()));
+
     private static void addItemsToSpawnEggItemGroup(FabricItemGroupEntries entries) {
         entries.add(PLATYPUS_SPAWN_EGG);
+    }
+
+    private static void addItemsToToolsItemGroup(FabricItemGroupEntries entries) {
+        entries.add(PLATYPUS_BUCKET);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -30,5 +37,6 @@ public class ModItems {
         PlatypusMod.LOGGER.info("Registering Mod Items for" + PlatypusMod.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(ModItems::addItemsToSpawnEggItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
     }
 }
