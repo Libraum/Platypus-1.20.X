@@ -7,8 +7,6 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.WaterCreatureEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,14 +32,15 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         super(entityType, world);
     }
 
+    //Attributes
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AxolotlEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0f)
-                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8f);
     }
 
+    //Goals
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
@@ -51,11 +50,13 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
 
         this.goalSelector.add(3, new FollowParentGoal(this, 1.150));
 
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.75f, 1));
-        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
-        this.goalSelector.add(6, new LookAroundGoal(this));
+        this.goalSelector.add(4, new MoveIntoWaterGoal(this));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
+        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
+        this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
+    //Breeding
     @Override
     public boolean isBreedingItem(ItemStack stack) {
         return stack.isOf(Items.SPIDER_EYE);
@@ -67,6 +68,7 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         return ModEntities.PLATYPUS.create(world);
     }
 
+    //Animation Controller
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
@@ -87,6 +89,7 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         return cache;
     }
 
+    //Sounds
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
