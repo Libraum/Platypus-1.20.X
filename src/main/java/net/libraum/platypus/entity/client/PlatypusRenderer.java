@@ -4,6 +4,7 @@ import net.libraum.platypus.PlatypusMod;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;

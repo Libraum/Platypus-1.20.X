@@ -10,5 +10,6 @@ public class PlatypusModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.PLATYPUS, PlatypusRenderer::new);
+
     }
 }
