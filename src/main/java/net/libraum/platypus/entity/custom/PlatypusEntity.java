@@ -37,13 +37,12 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         return AxolotlEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1f);
     }
 
     //Goals
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
 
         this.goalSelector.add(1, new AnimalMateGoal(this, 0.850));
         this.goalSelector.add(2, new TemptGoal(this, 1.150, Ingredient.ofItems(Items.SPIDER_EYE), false));
@@ -51,9 +50,8 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         this.goalSelector.add(3, new FollowParentGoal(this, 1.150));
 
         this.goalSelector.add(4, new MoveIntoWaterGoal(this));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
-        this.goalSelector.add(7, new LookAroundGoal(this));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
+        this.goalSelector.add(6, new LookAroundGoal(this));
     }
 
     //Breeding
@@ -71,17 +69,26 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     //Animation Controller
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllers.add(movementController(this));
     }
 
-    private <P extends GeoAnimatable> PlayState predicate(AnimationState<P> pAnimationState) {
-        if(pAnimationState.isMoving()) {
-            pAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.walk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
+    public <P extends GeoAnimatable> AnimationController<PlatypusEntity> movementController(PlatypusEntity PlatypusEntity) {
+        return new AnimationController<PlatypusEntity>(this, "movement", 0, state -> {
+            boolean isSwimming = this.isTouchingWater();
 
-        pAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platypus.idle", Animation.LoopType.LOOP));
-        return PlayState.CONTINUE;
+            if (isSwimming) {
+                if (state.isMoving()) {
+                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.swim", Animation.LoopType.LOOP));
+                } else {
+                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.float", Animation.LoopType.LOOP));
+                }
+            } else if (state.isMoving()) {
+                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.walk", Animation.LoopType.LOOP));
+            } else {
+                state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.idle", Animation.LoopType.LOOP));
+            }
+            return PlayState.CONTINUE;
+        });
     }
 
     @Override
