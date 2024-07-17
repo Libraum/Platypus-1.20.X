@@ -44,10 +44,10 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     @Override
     protected void initGoals() {
 
-        this.goalSelector.add(1, new AnimalMateGoal(this, 0.850));
-        this.goalSelector.add(2, new TemptGoal(this, 1.150, Ingredient.ofItems(Items.SPIDER_EYE), false));
+        this.goalSelector.add(1, new AnimalMateGoal(this, 0.5));
+        this.goalSelector.add(2, new TemptGoal(this, 0.75, Ingredient.ofItems(Items.SPIDER_EYE), false));
 
-        this.goalSelector.add(3, new FollowParentGoal(this, 1.150));
+        this.goalSelector.add(3, new FollowParentGoal(this, 0.75));
 
         this.goalSelector.add(4, new MoveIntoWaterGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
@@ -72,8 +72,8 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         controllers.add(movementController(this));
     }
 
-    public <P extends GeoAnimatable> AnimationController<PlatypusEntity> movementController(PlatypusEntity PlatypusEntity) {
-        return new AnimationController<PlatypusEntity>(this, "movement", 0, state -> {
+    public <T extends GeoAnimatable> AnimationController<PlatypusEntity> movementController(PlatypusEntity PlatypusEntity) {
+        return new AnimationController<PlatypusEntity>(this, "movement", 5, state -> {
             boolean isSwimming = this.isTouchingWater();
 
             if (isSwimming) {
@@ -100,7 +100,7 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_AXOLOTL_IDLE_AIR;
+        return this.isTouchingWater() ? SoundEvents.ENTITY_AXOLOTL_IDLE_WATER : SoundEvents.ENTITY_AXOLOTL_IDLE_AIR;
     }
 
     @Nullable
@@ -113,5 +113,15 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_AXOLOTL_DEATH;
+    }
+
+    @Override
+    protected SoundEvent getSplashSound() {
+        return SoundEvents.ENTITY_AXOLOTL_SPLASH;
+    }
+
+    @Override
+    protected SoundEvent getSwimSound() {
+        return SoundEvents.ENTITY_AXOLOTL_SWIM;
     }
 }

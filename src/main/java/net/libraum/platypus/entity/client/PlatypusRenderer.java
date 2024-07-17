@@ -28,4 +28,9 @@ public class PlatypusRenderer extends GeoEntityRenderer<PlatypusEntity> {
 
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
+
+    @Override
+    public float getMotionAnimThreshold(PlatypusEntity animatable) {
+        return 0.0001f;
+    }
 }
