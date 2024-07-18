@@ -24,6 +24,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import net.libraum.platypus.items.ModItems;
 
 public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable {
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -35,9 +36,9 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     //Attributes
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AxolotlEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0D)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1f);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0);
     }
 
     //Goals
@@ -49,7 +50,6 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
 
         this.goalSelector.add(3, new FollowParentGoal(this, 0.75));
 
-        this.goalSelector.add(4, new MoveIntoWaterGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
         this.goalSelector.add(6, new LookAroundGoal(this));
     }
@@ -96,6 +96,12 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         return cache;
     }
 
+    //Bucket
+    @Override
+    public ItemStack getBucketItem() {
+        return new ItemStack(ModItems.PLATYPUS_BUCKET);
+    }
+
     //Sounds
     @Nullable
     @Override
@@ -115,13 +121,21 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         return SoundEvents.ENTITY_AXOLOTL_DEATH;
     }
 
+    @Nullable
     @Override
     protected SoundEvent getSplashSound() {
         return SoundEvents.ENTITY_AXOLOTL_SPLASH;
     }
 
+    @Nullable
     @Override
     protected SoundEvent getSwimSound() {
         return SoundEvents.ENTITY_AXOLOTL_SWIM;
+    }
+
+    @Nullable
+    @Override
+    public SoundEvent getBucketFillSound() {
+        return SoundEvents.ITEM_BUCKET_FILL_AXOLOTL;
     }
 }
