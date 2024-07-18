@@ -13,6 +13,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class PlatypusRenderer extends GeoEntityRenderer<PlatypusEntity> {
     public PlatypusRenderer(EntityRendererFactory.Context renderManager) {
         super(renderManager, new PlatypusModel());
+        this.shadowRadius = 0.5f;
     }
 
     @Override
