@@ -16,18 +16,39 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+    //New Items
     public static final Item PLATYPUS_SPAWN_EGG = registerItem("platypus_spawn_egg",
             new SpawnEggItem(ModEntities.PLATYPUS, 0x4a2e1b, 0x31373e, new FabricItemSettings()));
 
     public static final Item PLATYPUS_BUCKET = registerItem("platypus_bucket",
             new EntityBucketItem(ModEntities.PLATYPUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, new Item.Settings().maxCount(1)));
 
+    public static final Item PLATYPLUSHIE = registerItem("platyplushie",
+            new Item(new FabricItemSettings().maxCount(16)));
+    public static final Item PLATYPLUSHIE_BLUE = registerItem("platyplushie_blue",
+            new Item(new FabricItemSettings().maxCount(16)));
+    public static final Item PLATYPLUSHIE_DARK = registerItem("platyplushie_dark",
+            new Item(new FabricItemSettings().maxCount(16)));
+    public static final Item PLATYPLUSHIE_GOLD = registerItem("platyplushie_gold",
+            new Item(new FabricItemSettings().maxCount(16)));
+    public static final Item PLATYPLUSHIE_BLOOP = registerItem("platyplushie_bloop",
+            new Item(new FabricItemSettings().maxCount(16)));
+
+    //Item Groups
     private static void addItemsToSpawnEggItemGroup(FabricItemGroupEntries entries) {
         entries.add(PLATYPUS_SPAWN_EGG);
     }
 
     private static void addItemsToToolsItemGroup(FabricItemGroupEntries entries) {
         entries.add(PLATYPUS_BUCKET);
+    }
+
+    private static void addItemsToFunctionalItemGroup(FabricItemGroupEntries entries) {
+        entries.add(PLATYPLUSHIE);
+        entries.add(PLATYPLUSHIE_BLUE);
+        entries.add(PLATYPLUSHIE_DARK);
+        entries.add(PLATYPLUSHIE_GOLD);
+        entries.add(PLATYPLUSHIE_BLOOP);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -39,5 +60,6 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(ModItems::addItemsToSpawnEggItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItems::addItemsToFunctionalItemGroup);
     }
 }

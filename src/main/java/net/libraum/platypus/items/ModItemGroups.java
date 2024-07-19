@@ -14,9 +14,14 @@ public class ModItemGroups {
     public static final ItemGroup PLATYPUS_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(PlatypusMod.MOD_ID,"platypus"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.platypus"))
-                    .icon(() -> new ItemStack(ModItems.PLATYPUS_BUCKET)).entries((displayContext, entries) -> {
+                    .icon(() -> new ItemStack(ModItems.PLATYPLUSHIE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.PLATYPUS_SPAWN_EGG);
                         entries.add(ModItems.PLATYPUS_BUCKET);
+                        entries.add(ModItems.PLATYPLUSHIE);
+                        entries.add(ModItems.PLATYPLUSHIE_BLUE);
+                        entries.add(ModItems.PLATYPLUSHIE_DARK);
+                        entries.add(ModItems.PLATYPLUSHIE_GOLD);
+                        entries.add(ModItems.PLATYPLUSHIE_BLOOP);
                     }).build());
     
     public static void registerItemGroups() {

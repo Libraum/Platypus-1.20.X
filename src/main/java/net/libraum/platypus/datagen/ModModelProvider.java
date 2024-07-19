@@ -24,5 +24,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.PLATYPUS_SPAWN_EGG,
                 new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
         itemModelGenerator.register(ModItems.PLATYPUS_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATYPLUSHIE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATYPLUSHIE_BLUE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATYPLUSHIE_DARK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATYPLUSHIE_GOLD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLATYPLUSHIE_BLOOP, Models.GENERATED);
     }
 }

@@ -3,6 +3,7 @@ package net.libraum.platypus.entity.custom;
 import net.libraum.platypus.entity.ModEntities;
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.VariantHolder;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -21,13 +22,12 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import net.libraum.platypus.items.ModItems;
 
-public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable {
+public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable, VariantHolder<AxolotlEntity.Variant> {
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public PlatypusEntity(EntityType<? extends AxolotlEntity> entityType, World world) {

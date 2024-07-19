@@ -18,7 +18,7 @@ public class PlatypusModel extends GeoModel<PlatypusEntity> {
 
     @Override
     public Identifier getTextureResource(PlatypusEntity animatable) {
-        return new Identifier(PlatypusMod.MOD_ID, "textures/entity/platypus.png");
+        return new Identifier(PlatypusMod.MOD_ID, "textures/entity/platypus/platypus.png");
     }
 
     @Override

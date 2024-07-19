@@ -4,21 +4,37 @@ import net.libraum.platypus.PlatypusMod;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class PlatypusRenderer extends GeoEntityRenderer<PlatypusEntity> {
+    private static final Identifier BASE_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus.png");
+    private static final Identifier BLUE_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus_blue.png");
+    private static final Identifier DARK_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus_dark.png");
+    private static final Identifier GOLD_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus_gold.png");
+    private static final Identifier BLOOP_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus_bloop.png");
+
     public PlatypusRenderer(EntityRendererFactory.Context renderManager) {
         super(renderManager, new PlatypusModel());
         this.shadowRadius = 0.5f;
     }
 
     @Override
-    public Identifier getTextureLocation(PlatypusEntity animatable) {
-        return new Identifier(PlatypusMod.MOD_ID, "textures/entity/platypus.png");
+    public Identifier getTexture(PlatypusEntity animatable) {
+        String string = Formatting.strip(animatable.getName().getString());
+        if ("Blue".equals(string)) {
+            return BLUE_TEXTURE;
+        } else if ("Dark".equals(string)) {
+            return DARK_TEXTURE;
+        }else if ("Gold".equals(string)) {
+            return GOLD_TEXTURE;
+        }else if ("Bloop".equals(string)) {
+            return BLOOP_TEXTURE;
+        } else {
+            return BASE_TEXTURE;
+        }
     }
 
     @Override
