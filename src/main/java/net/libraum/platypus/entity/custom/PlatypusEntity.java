@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
@@ -44,10 +45,10 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     //Goals
     @Override
     protected void initGoals() {
+        this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25));
 
         this.goalSelector.add(1, new AnimalMateGoal(this, 0.5));
         this.goalSelector.add(2, new TemptGoal(this, 0.75, Ingredient.ofItems(Items.SPIDER_EYE), false));
-
         this.goalSelector.add(3, new FollowParentGoal(this, 0.75));
 
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
@@ -73,17 +74,23 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     }
 
     public <T extends GeoAnimatable> AnimationController<PlatypusEntity> movementController(PlatypusEntity PlatypusEntity) {
-        return new AnimationController<PlatypusEntity>(this, "movement", 5, state -> {
+        return new AnimationController<PlatypusEntity>(this, "movement", 10, state -> {
             boolean isSwimming = this.isTouchingWater();
 
+            //Swimming
             if (isSwimming) {
-                if (state.isMoving()) {
+                if (state.isMoving() && getVelocity().getY() > 0.05) {
+                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.swim_up", Animation.LoopType.LOOP));
+                } else if (state.isMoving() && getVelocity().getY() < -0.05) {
+                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.swim_down", Animation.LoopType.LOOP));
+                } else if (state.isMoving() && getVelocity().getY() < 0.05 && getVelocity().getY() > -0.05) {
                     state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.swim", Animation.LoopType.LOOP));
                 } else {
                     state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.float", Animation.LoopType.LOOP));
                 }
+            //Grounded
             } else if (state.isMoving()) {
-                    state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.walk", Animation.LoopType.LOOP));
+                state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.walk", Animation.LoopType.LOOP));
             } else {
                 state.getController().setAnimation(RawAnimation.begin().then("animation.platypus.idle", Animation.LoopType.LOOP));
             }
