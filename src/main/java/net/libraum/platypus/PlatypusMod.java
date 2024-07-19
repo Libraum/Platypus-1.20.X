@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.libraum.platypus.entity.ModEntities;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
+import net.libraum.platypus.items.ModItemGroups;
 import net.libraum.platypus.items.ModItems;
 import net.libraum.platypus.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
@@ -16,8 +17,9 @@ public class PlatypusMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		FabricDefaultAttributeRegistry.register(ModEntities.PLATYPUS, PlatypusEntity.setAttributes());
+		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
+		FabricDefaultAttributeRegistry.register(ModEntities.PLATYPUS, PlatypusEntity.setAttributes());
 		ModWorldGeneration.generateModWorldGen();
 	}
 }
