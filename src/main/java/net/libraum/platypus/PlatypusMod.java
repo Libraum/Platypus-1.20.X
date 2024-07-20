@@ -10,6 +10,7 @@ import net.libraum.platypus.items.ModItems;
 import net.libraum.platypus.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
 public class PlatypusMod implements ModInitializer {
 	public static final String MOD_ID = "platypusmod";
@@ -19,7 +20,10 @@ public class PlatypusMod implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
-		FabricDefaultAttributeRegistry.register(ModEntities.PLATYPUS, PlatypusEntity.setAttributes());
 		ModWorldGeneration.generateModWorldGen();
+
+		GeckoLib.initialize();
+
+		FabricDefaultAttributeRegistry.register(ModEntities.PLATYPUS, PlatypusEntity.setAttributes());
 	}
 }
