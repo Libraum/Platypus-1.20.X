@@ -2,7 +2,6 @@ package net.libraum.platypus.block.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.BlockPos;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -25,7 +24,7 @@ public class PlatyplushieBlockEntity extends BlockEntity implements GeoBlockEnti
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> tAnimationState) {
-        tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platyplushie_block.bounce_loop", Animation.LoopType.LOOP));
+        tAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.platyplushie_block.bounce", Animation.LoopType.PLAY_ONCE));
         return PlayState.CONTINUE;
     }
 
