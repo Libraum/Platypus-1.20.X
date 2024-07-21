@@ -4,12 +4,10 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.libraum.platypus.PlatypusMod;
+import net.libraum.platypus.block.ModBlocks;
 import net.libraum.platypus.entity.ModEntities;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.EntityBucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
@@ -24,7 +22,7 @@ public class ModItems {
             new EntityBucketItem(ModEntities.PLATYPUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, new Item.Settings().maxCount(1)));
 
     public static final Item PLATYPLUSHIE = registerItem("platyplushie",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new BlockItem(ModBlocks.PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_BLUE = registerItem("platyplushie_blue",
             new Item(new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_DARK = registerItem("platyplushie_dark",

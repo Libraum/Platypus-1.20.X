@@ -3,6 +3,8 @@ package net.libraum.platypus;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.libraum.platypus.block.ModBlocks;
+import net.libraum.platypus.block.entity.ModBlockEntities;
 import net.libraum.platypus.entity.ModEntities;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
 import net.libraum.platypus.items.ModItemGroups;
@@ -20,7 +22,10 @@ public class PlatypusMod implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 		ModWorldGeneration.generateModWorldGen();
+
+		ModBlockEntities.registerAllBlockEntities();
 
 		GeckoLib.initialize();
 
