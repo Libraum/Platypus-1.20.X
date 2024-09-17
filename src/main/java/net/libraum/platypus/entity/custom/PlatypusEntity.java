@@ -8,6 +8,9 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +20,10 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.Util;
+import net.minecraft.util.function.ValueLists;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -27,7 +34,10 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import net.libraum.platypus.items.ModItems;
 
-public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable, VariantHolder<AxolotlEntity.Variant> {
+import java.util.Arrays;
+import java.util.function.IntFunction;
+
+public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable{
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public PlatypusEntity(EntityType<? extends AxolotlEntity> entityType, World world) {

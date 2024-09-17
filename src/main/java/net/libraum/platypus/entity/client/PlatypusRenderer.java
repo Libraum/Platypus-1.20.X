@@ -1,5 +1,6 @@
 package net.libraum.platypus.entity.client;
 
+import com.google.common.collect.Maps;
 import net.libraum.platypus.PlatypusMod;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -7,7 +8,11 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+
+import java.util.Locale;
+import java.util.Map;
 
 public class PlatypusRenderer extends GeoEntityRenderer<PlatypusEntity> {
     private static final Identifier BASE_TEXTURE = new Identifier(PlatypusMod.MOD_ID,"textures/entity/platypus/platypus.png");
@@ -22,19 +27,17 @@ public class PlatypusRenderer extends GeoEntityRenderer<PlatypusEntity> {
     }
 
     @Override
-    public Identifier getTexture(PlatypusEntity animatable) {
-        String string = Formatting.strip(animatable.getName().getString());
-        if ("Blue".equals(string)) {
+    public Identifier getTexture(PlatypusEntity platypusEntity) {
+        String string = Formatting.strip(platypusEntity.getName().getString());
+        if ("Melbourne".equals(string)) {
             return BLUE_TEXTURE;
-        } else if ("Dark".equals(string)) {
+        } else if ("Darwin".equals(string)) {
             return DARK_TEXTURE;
-        }else if ("Gold".equals(string)) {
+        } else if ("Sydney".equals(string)) {
             return GOLD_TEXTURE;
-        }else if ("Bloop".equals(string)) {
+        } else if ("Bloop".equals(string)) {
             return BLOOP_TEXTURE;
-        } else {
-            return BASE_TEXTURE;
-        }
+        } else return BASE_TEXTURE;
     }
 
     @Override
