@@ -1,9 +1,15 @@
 package net.libraum.platypus.entity.custom;
 
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import net.libraum.platypus.entity.ModEntities;
+import net.libraum.platypus.entity.ai.PlatypusBrain;
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.VariantHolder;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.sensor.Sensor;
+import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -39,6 +45,9 @@ import java.util.function.IntFunction;
 
 public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketable{
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    protected static final ImmutableList<? extends SensorType<? extends Sensor<? super PlatypusEntity>>> SENSORS = ImmutableList.of(
+            SensorType.NEAREST_ADULT, SensorType.HURT_BY, SensorType.AXOLOTL_TEMPTATIONS
+    );
 
     public PlatypusEntity(EntityType<? extends AxolotlEntity> entityType, World world) {
         super(entityType, world);
@@ -63,6 +72,11 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
 
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
         this.goalSelector.add(6, new LookAroundGoal(this));
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return PlatypusBrain.create(Brain.createProfile(MEMORY_MODULES, SENSORS).deserialize(dynamic));
     }
 
     //Breeding
