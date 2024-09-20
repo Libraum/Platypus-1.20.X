@@ -24,13 +24,13 @@ public class ModItems {
     public static final Item PLATYPLUSHIE = registerItem("platyplushie",
             new BlockItem(ModBlocks.PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_BLUE = registerItem("platyplushie_blue",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new BlockItem(ModBlocks.BLUE_PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_DARK = registerItem("platyplushie_dark",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new BlockItem(ModBlocks.DARK_PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_GOLD = registerItem("platyplushie_gold",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new BlockItem(ModBlocks.GOLD_PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_BLOOP = registerItem("platyplushie_bloop",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new BlockItem(ModBlocks.BLOOP_PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
 
     //Item Groups
     private static void addItemsToSpawnEggItemGroup(FabricItemGroupEntries entries) {

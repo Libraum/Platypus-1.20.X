@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "0"
+      },
+    "rotation=1": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "22.5"
+    },
+    "rotation=2": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "45"
+    },
+    "rotation=3": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "67.5"
+    },
+    "rotation=4": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "90"
+    },
+    "rotation=5": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "112.5"
+    },
+    "rotation=6": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "135"
+    },
+    "rotation=7": {
+      "model": "platypusmod:geo/platyplushie_block",
+      "y": "157.5"
+    },
+    "rotation=8": {
+      "model": "platypusmod:block/platyplushie_block",
+      "y": "180"
+    },
+    "rotation=9": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "202.5"
+    },
+    "rotation=10": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "225"
+    },
+    "rotation=11": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "247.5"
+    },
+    "rotation=12": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "270"
+    },
+    "rotation=13": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "292.5"
+    },
+    "rotation=14": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "315"
+    },
+    "rotation=15": {
+      "model": "platypusmod:geo/platyplushie_block.geo.json",
+      "y": "337.5"
+    }
+  }
+}
