@@ -21,6 +21,9 @@ public class ModItems {
     public static final Item PLATYPUS_BUCKET = registerItem("platypus_bucket",
             new EntityBucketItem(ModEntities.PLATYPUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, new Item.Settings().maxCount(1)));
 
+    public static final Item YABBY = registerItem("yabby",
+            new Item(new FabricItemSettings()));
+
     public static final Item PLATYPLUSHIE = registerItem("platyplushie",
             new BlockItem(ModBlocks.PLATYPLUSHIE_BLOCK, new FabricItemSettings().maxCount(16)));
     public static final Item PLATYPLUSHIE_BLUE = registerItem("platyplushie_blue",
@@ -41,6 +44,10 @@ public class ModItems {
         entries.add(PLATYPUS_BUCKET);
     }
 
+    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
+        entries.add(YABBY);
+    }
+
     private static void addItemsToFunctionalItemGroup(FabricItemGroupEntries entries) {
         entries.add(PLATYPLUSHIE);
         entries.add(PLATYPLUSHIE_BLUE);
@@ -58,6 +65,7 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(ModItems::addItemsToSpawnEggItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItems::addItemsToFunctionalItemGroup);
     }
 }

@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.PLATYPLUSHIE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.PLATYPUS_SPAWN_EGG);
                         entries.add(ModItems.PLATYPUS_BUCKET);
+                        entries.add(ModItems.YABBY);
                         entries.add(ModItems.PLATYPLUSHIE);
                         entries.add(ModItems.PLATYPLUSHIE_BLUE);
                         entries.add(ModItems.PLATYPLUSHIE_DARK);

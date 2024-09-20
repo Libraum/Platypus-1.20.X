@@ -9,6 +9,7 @@ import net.libraum.platypus.entity.ModEntities;
 import net.libraum.platypus.entity.custom.PlatypusEntity;
 import net.libraum.platypus.items.ModItemGroups;
 import net.libraum.platypus.items.ModItems;
+import net.libraum.platypus.util.ModLootTableModifiers;
 import net.libraum.platypus.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,8 @@ public class PlatypusMod implements ModInitializer {
 		ModWorldGeneration.generateModWorldGen();
 
 		ModBlockEntities.registerAllBlockEntities();
+
+		ModLootTableModifiers.modifyLootTables();
 
 		GeckoLib.initialize();
 

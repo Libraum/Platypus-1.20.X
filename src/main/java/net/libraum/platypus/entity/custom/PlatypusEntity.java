@@ -67,7 +67,7 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
         this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25));
 
         this.goalSelector.add(1, new AnimalMateGoal(this, 0.5));
-        this.goalSelector.add(2, new TemptGoal(this, 0.75, Ingredient.ofItems(Items.SPIDER_EYE), false));
+        this.goalSelector.add(2, new TemptGoal(this, 0.75, Ingredient.ofItems(ModItems.YABBY), false));
         this.goalSelector.add(3, new FollowParentGoal(this, 0.75));
 
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
@@ -82,7 +82,7 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     //Breeding
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(Items.SPIDER_EYE);
+        return stack.isOf(ModItems.YABBY);
     }
 
     @Nullable
