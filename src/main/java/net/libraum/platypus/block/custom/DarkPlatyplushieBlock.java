@@ -1,6 +1,7 @@
 package net.libraum.platypus.block.custom;
 
-import net.libraum.platypus.block.entity.PlatyplushieBlockEntity;
+import net.libraum.platypus.block.entity.BluePlatyplushieBlockEntity;
+import net.libraum.platypus.block.entity.DarkPlatyplushieBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,8 +12,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -22,11 +21,11 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class PlatyplushieBlock extends BlockWithEntity {
+public class DarkPlatyplushieBlock extends BlockWithEntity {
     public static final IntProperty ROTATION = Properties.ROTATION;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 3.5,12.0);
 
-    public PlatyplushieBlock(Settings settings) {
+    public DarkPlatyplushieBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(ROTATION, Integer.valueOf(0)));
     }
@@ -45,8 +44,8 @@ public class PlatyplushieBlock extends BlockWithEntity {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             if (hand == Hand.MAIN_HAND) {
-                PlatyplushieBlockEntity platyplushieBlockEntity = (PlatyplushieBlockEntity) world.getBlockEntity(pos);
-                platyplushieBlockEntity.triggerAnim("bounce_controller", "bounce");
+                DarkPlatyplushieBlockEntity darkPlatyplushieBlockEntity = (DarkPlatyplushieBlockEntity) world.getBlockEntity(pos);
+                darkPlatyplushieBlockEntity.triggerAnim("bounce_controller", "bounce");
                 world.playSound(null, pos, SoundEvents.ENTITY_AXOLOTL_IDLE_AIR, SoundCategory.BLOCKS, 1f, 1.5f);
             }
         }
@@ -61,7 +60,7 @@ public class PlatyplushieBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new PlatyplushieBlockEntity(pos, state);
+        return new DarkPlatyplushieBlockEntity(pos, state);
     }
 
     @Override

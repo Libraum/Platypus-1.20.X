@@ -8,6 +8,10 @@
   "item.platypusmod.platyplushie_bloop": "Bloop Platyplushie",
 
   "block.platypusmod.platyplushie_block": "Platyplushie",
+  "block.platypusmod.blue_platyplushie_block": "Blue Platyplushie",
+  "block.platypusmod.dark_platyplushie_block": "Dark Platyplushie",
+  "block.platypusmod.gold_platyplushie_block": "Gold Platyplushie",
+  "block.platypusmod.bloop_platyplushie_block": "Bloop Platyplushie",
 
   "itemgroup.platypus": "Platypus Group"
 }
