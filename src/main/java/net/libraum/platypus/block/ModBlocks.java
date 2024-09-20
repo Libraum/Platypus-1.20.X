@@ -26,7 +26,6 @@ public class ModBlocks {
     private static Item registerBlockItem(String name, Block block, ItemGroup group) {
         Item item = Registry.register(Registries.ITEM, new Identifier(PlatypusMod.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings()));
-        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
         return item;
     }
 
