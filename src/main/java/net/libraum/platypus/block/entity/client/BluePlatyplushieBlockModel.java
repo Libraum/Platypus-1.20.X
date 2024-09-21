@@ -14,7 +14,7 @@ public class BluePlatyplushieBlockModel extends GeoModel<BluePlatyplushieBlockEn
 
     @Override
     public Identifier getTextureResource(BluePlatyplushieBlockEntity animatable) {
-        return new Identifier(PlatypusMod.MOD_ID, "textures//block/platyplushie/blue_platyplushie_block.png");
+        return new Identifier(PlatypusMod.MOD_ID, "textures/block/blue_platyplushie_block.png");
     }
 
     @Override

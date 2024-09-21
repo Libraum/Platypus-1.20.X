@@ -56,22 +56,17 @@ public class PlatypusEntity extends AxolotlEntity implements GeoEntity, Bucketab
     //Attributes
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AxolotlEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0);
     }
 
     //Goals
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25));
+        this.goalSelector.add(0, new EscapeDangerGoal(this, 1));
 
         this.goalSelector.add(1, new AnimalMateGoal(this, 0.5));
         this.goalSelector.add(2, new TemptGoal(this, 0.75, Ingredient.ofItems(ModItems.YABBY), false));
-        this.goalSelector.add(3, new FollowParentGoal(this, 0.75));
-
-        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
-        this.goalSelector.add(6, new LookAroundGoal(this));
+        this.goalSelector.add(3, new FollowParentGoal(this, 0.5));
     }
 
     @Override

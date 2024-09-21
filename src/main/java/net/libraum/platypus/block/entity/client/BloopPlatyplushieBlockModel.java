@@ -14,7 +14,7 @@ public class BloopPlatyplushieBlockModel extends GeoModel<BloopPlatyplushieBlock
 
     @Override
     public Identifier getTextureResource(BloopPlatyplushieBlockEntity animatable) {
-        return new Identifier(PlatypusMod.MOD_ID, "textures//block/platyplushie/bloop_platyplushie_block.png");
+        return new Identifier(PlatypusMod.MOD_ID, "textures/block/bloop_platyplushie_block.png");
     }
 
     @Override

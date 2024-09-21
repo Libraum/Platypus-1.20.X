@@ -13,7 +13,7 @@ public class GoldPlatyplushieBlockModel extends GeoModel<GoldPlatyplushieBlockEn
 
     @Override
     public Identifier getTextureResource(GoldPlatyplushieBlockEntity animatable) {
-        return new Identifier(PlatypusMod.MOD_ID, "textures//block/platyplushie/gold_platyplushie_block.png");
+        return new Identifier(PlatypusMod.MOD_ID, "textures/block/gold_platyplushie_block.png");
     }
 
     @Override
